@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['fingerling']
+
+roboflow:
+  workspace: tf2-dxzlq
+  project: fingerlings-dataset-new
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/tf2-dxzlq/fingerlings-dataset-new/dataset/1

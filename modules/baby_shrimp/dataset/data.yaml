@@ -1,0 +1,12 @@
+names:
+- babyshrimp
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: baby-shrimp-pusfj
+  url: https://universe.roboflow.com/test-ij2el/baby-shrimp-pusfj/dataset/1
+  version: 1
+  workspace: test-ij2el
+test: ../test/images
+train: ../train/images
+val: ../valid/images
