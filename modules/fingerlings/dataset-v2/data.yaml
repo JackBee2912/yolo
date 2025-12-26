@@ -1,0 +1,12 @@
+names:
+- fish
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: fingerlings-tqfux
+  url: https://universe.roboflow.com/ken-5wlb6/fingerlings-tqfux/dataset/1
+  version: 1
+  workspace: ken-5wlb6
+test: ../test/images
+train: ../train/images
+val: ../valid/images

@@ -39,13 +39,35 @@ def test_fingerlings(model_path, image_path, conf=0.25, imgsz=640, show_dots=Tru
     
     if show_dots:
         img = cv2.imread(image_path)
-        
+
         for box in detections:
             x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
             center_x = int((x1 + x2) / 2)
             center_y = int((y1 + y2) / 2)
             cv2.circle(img, (center_x, center_y), radius=5, color=(0, 0, 255), thickness=-1)
-        
+
+        # Add count text on image
+        text = f"Count: {count}"
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 1.5
+        thickness = 3
+
+        # Get text size for background rectangle
+        (text_width, text_height), baseline = cv2.getTextSize(text, font, font_scale, thickness)
+
+        # Draw background rectangle
+        padding = 10
+        cv2.rectangle(img,
+                     (10, 10),
+                     (10 + text_width + padding * 2, 10 + text_height + padding * 2),
+                     (0, 0, 0),
+                     -1)
+
+        # Draw text
+        cv2.putText(img, text,
+                   (10 + padding, 10 + text_height + padding),
+                   font, font_scale, (0, 255, 0), thickness)
+
         output_dir = Path("runs/detect/fingerlings_predict_dots")
         output_dir.mkdir(parents=True, exist_ok=True)
         output_path = output_dir / Path(image_path).name

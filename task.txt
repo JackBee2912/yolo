@@ -1,0 +1,32 @@
+Build a real-time fish/shrimp larvae counting system
+using a pre-trained YOLOv8 single-class detection model
+and ByteTrack for multi-object tracking.
+
+The YOLOv8 model has already been trained and fine-tuned
+on fish/shrimp larvae data captured from a fixed camera
+and controlled mechanical flow.
+
+Do NOT perform per-frame detection-based counting.
+
+Use object tracking with ByteTrack combined with
+dual-gate (or line-crossing) logic, direction validation,
+and per-track-ID cooldown to perform counting.
+
+Increment the count only when a tracked object ID
+crosses the virtual gate from region A to region B.
+
+Ignore:
+- Per-frame detection counts
+- Backward crossings (B → A)
+- Oscillations near the gate within the cooldown window
+
+Segmentation or density-based counting MUST NOT be used
+in the default pipeline and should only be considered
+as a fallback if prolonged clustering or severe occlusion
+is detected.
+
+The system must be optimized for:
+- High accuracy
+- Temporal stability
+- Real-time performance
+on a fixed camera with a controlled, single-layer flow.
